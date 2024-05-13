@@ -46,19 +46,19 @@ body {
 .grid {
     position: absolute;
     display: grid;
-    gap: 68px;
+    gap: 50px;
 }
 
 .grida {
-    grid-template-columns: repeat(8, 20px);
-    grid-template-rows: repeat(10, 20px);
-    transform: translate(15px, -10px);
+    grid-template-columns: repeat(11, 20px);
+    grid-template-rows: repeat(13, 20px);
+    transform: translate(35px, 0px);
 }
 
 .gridb {
-    grid-template-columns: repeat(7, 20px);
-    grid-template-rows: repeat(10, 20px);
-    transform: translate(15px, 35px);
+    grid-template-columns: repeat(10, 20px);
+    grid-template-rows: repeat(13, 20px);
+    transform: translate(35px, 32px);
     
 }
 
