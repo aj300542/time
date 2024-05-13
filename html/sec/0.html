@@ -75,24 +75,27 @@
             let elementAtCenter = document.elementFromPoint(centerX, centerY);
             return elementAtCenter === circle;
         }
-        setInterval(function () {
+        function checkOverlap() {
             cellsA.forEach((cell, index) => {
                 if (isOverlapped(cell)) {
-                    cell.style.animationPlayState = 'running';  // 修改的部分
+                    cell.style.animationPlayState = 'running';
                     cell.style.opacity = 1;
                 } else {
-                    cell.style.animationPlayState = 'paused';  // 修改的部分
+                    cell.style.animationPlayState = 'paused';
                 }
             });
             cellsB.forEach((cell, index) => {
                 if (isOverlapped(cell)) {
-                    cell.style.animationPlayState = 'running';  // 修改的部分
+                    cell.style.animationPlayState = 'running';
                     cell.style.opacity = 1;
                 } else {
-                    cell.style.animationPlayState = 'paused';  // 修改的部分
+                    cell.style.animationPlayState = 'paused';
                 }
             });
-        }, 10);
+            requestAnimationFrame(checkOverlap);  // 使用 requestAnimationFrame 替代了 setInterval
+        }
+
+        checkOverlap();  // 开始执行 checkOverlap 函数
     </script>
 </body>
 
