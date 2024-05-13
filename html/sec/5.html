@@ -4,7 +4,7 @@
 <head>
     <style>
         #circle5 {
-            background-color: #006400;
+            background-color: red;
             z-index: 99;
             transform: translate(-15px, -35px);
         }
@@ -21,7 +21,7 @@
             xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
             <path
                 d="M 680 20 Q 400 20 200 20 Q 180 180 160 340 Q 260 280 400 280 Q 680 280 680 540 Q 680 780 400 780 Q 200 780 140 700"
-                stroke="none" stroke-width="2" fill="none"></path>
+                stroke="none" stroke-width="4" fill="none"></path>
         </svg>
         <div id="circle5" class="circle"></div>
     </div>
@@ -36,9 +36,10 @@
             }
             grid.innerHTML = cells;  // 这里一次性地改变了所有的样式
             document.body.appendChild(grid);
+        }
 
-        createGrid('grida', 'cella', 8, 10);
-        createGrid('gridb', 'cellb', 7, 10);
+        createGrid('grida', 'cella', 11, 13);
+        createGrid('gridb', 'cellb', 10, 13);
     </script>
     <script>
         window.onload = function () {
@@ -74,34 +75,23 @@
             let elementAtCenter = document.elementFromPoint(centerX, centerY);
             return elementAtCenter === circle;
         }
-        let runcell = [];
         setInterval(function () {
-            let styles = '';
             cellsA.forEach((cell, index) => {
                 if (isOverlapped(cell)) {
-                    styles += '.grida .cell:nth-child(' + (index + 1) + ') { animation-play-state: running; }';
-                    runcell.push(cell);
+                    cell.style.animationPlayState = 'running';  // 修改的部分
                     cell.style.opacity = 1;
                 } else {
-                    styles += '.grida .cell:nth-child(' + (index + 1) + ') { animation-play-state: paused; }';
+                    cell.style.animationPlayState = 'paused';  // 修改的部分
                 }
             });
             cellsB.forEach((cell, index) => {
                 if (isOverlapped(cell)) {
-                    styles += '.gridb .cell:nth-child(' + (index + 1) + ') { animation-play-state: running; }';
-                    runcell.push(cell);
+                    cell.style.animationPlayState = 'running';  // 修改的部分
                     cell.style.opacity = 1;
                 } else {
-                    styles += '.gridb .cell:nth-child(' + (index + 1) + ') { animation-play-state: paused; }';
+                    cell.style.animationPlayState = 'paused';  // 修改的部分
                 }
             });
-            let styleElement = document.getElementById('dynamic-styles');
-            if (!styleElement) {
-                styleElement = document.createElement('style');
-                styleElement.id = 'dynamic-styles';
-                document.head.appendChild(styleElement);
-            }
-            styleElement.textContent = styles;
         }, 10);
     </script>
 </body>
