@@ -1,0 +1,12 @@
+  <svg width="3000" height="3000" xmlns="http://www.w3.org/2000/svg">
+    <defs>
+      <pattern id="hexagon-pattern" patternUnits="userSpaceOnUse" width="200" height="200" patternTransform="rotate(180) scale(1, 1)">
+        <polygon points="0,50 0,150 100,200 200,150 200,50 100,0" stroke="#006400" stroke-width="10" fill-opacity="0.05" stroke-opacity="0.2"></polygon>
+        <polygon points="100,200 100,100" stroke="#006400" stroke-width="10" fill-opacity="0.05" stroke-opacity="0.2"></polygon>
+        <polygon points="100,100 200,50" stroke="#006400" stroke-width="10" fill-opacity="0.05" stroke-opacity="0.2"></polygon>
+        <polygon points="100,100 0,50" stroke="#006400" stroke-width="10" fill-opacity="0.05" stroke-opacity="0.2"></polygon>
+      </pattern>
+    </defs>
+    
+    <rect width="100%" height="100%" fill="url(#hexagon-pattern)" />
+  </svg>
