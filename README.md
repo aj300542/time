@@ -1,1 +1,5 @@
-# time
+# Slow Timer, time-slowing clock, TSC
+在快节奏的生活中，我们的“时间减缓时钟”提醒你慢下来，珍惜每一刻。这款独特的时钟，设计简洁优雅，功能强大，不仅是精美的装饰品，更是管理时间的工具。它的秒针走得比普通时钟慢，让你有更多时间去享受生活。然而，这款时钟的背后，其实是一个代码优化的问题。由于代码优化不佳，占用了过多的CPU资源，导致网页运行卡顿，形成了“慢时钟”的现象。这是一个提醒，让我们在编写代码时，也要注意优化，以提高性能，提升用户体验。
+In this fast-paced life, our “time-slowing clock” reminds you to slow down and cherish every moment. This unique clock, with its simple and elegant design and powerful functions, is not only a beautiful decoration but also a tool for managing time. Its second hand moves slower than a regular clock, giving you more time to enjoy life. However, behind this clock is actually a problem of code optimization. Due to poor code optimization, it occupies too much CPU resources, causing the webpage to run slowly, forming the phenomenon of a “slow clock”. This is a reminder for us to pay attention to optimization when writing code, in order to improve performance and enhance user experience.
+https://aj300542.github.io/time/
+#更多的内容, more you can find in here https://aj300542.github.io
