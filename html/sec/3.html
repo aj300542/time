@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <style>
+        #circle3 {
+            background-color: #006400;
+            z-index: 99;
+            transform: translate(-15px, -35px);
+        }
+        ::-webkit-scrollbar {
+            display: none;
+        }
+    </style>
+     <link rel="stylesheet" type="text/css" href="number.css">
+</head>
+
+<body>
+    <div class="svg-container">
+        <svg id="svg-object3" viewBox="0 0 800 800" width="800" height="800" version="1.1"
+            xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+            <path
+                d="M 100 20 Q 400 20 680 20 Q 680 20 680 60 Q 540 160 360 280 Q 680 280 680 500 Q 680 740 400 740 Q 160 740 120 640"
+                stroke="none" stroke-width="2" fill="none"></path>
+        </svg>
+        <div id="circle3" class="circle"></div>
+    </div>
+    <script>
+        function createGrid(gridClass, cellClass, cols, rows) {
+            let grid = document.createElement('div');
+            grid.className = 'grid ' + gridClass;
+            let cells = '';
+            for (let i = 0; i < cols * rows; i++) {
+                let spinDuration = Math.random() * 2 + 0.5;
+                cells += '<div class="cell ' + cellClass + '" style="--spin-duration:' + spinDuration + 's"></div>';
+            }
+            grid.innerHTML = cells;  // 这里一次性地改变了所有的样式
+            document.body.appendChild(grid);
+        }
+
+        createGrid('grida', 'cella', 8, 10);
+        createGrid('gridb', 'cellb', 7, 10);
+    </script>
+    <script>
+        window.onload = function () {
+
+            var speed = 16;  // Increase or decrease this value to adjust the speed
+
+            var svgObject3 = document.getElementById('svg-object3');
+            var path3 = svgObject3.querySelector('path');
+            var length3 = path3.getTotalLength();
+            var circle3 = document.querySelector('#circle3');
+            var t3 = 0;
+
+            function animate3() {
+                var point = path3.getPointAtLength(t3);
+                circle3.style.top = point.y + 'px';
+                circle3.style.left = point.x + 'px';
+                t3 += speed;
+                if (t3 > length3) t3 = 0;
+                requestAnimationFrame(animate3);
+            }
+
+            animate3();
+        }
+    </script>
+    <script>
+        let circle = document.querySelector('#circle3');
+        let cellsA = Array.from(document.querySelectorAll('.grida .cell'));
+        let cellsB = Array.from(document.querySelectorAll('.gridb .cell'));
+        function isOverlapped(element) {
+            let rect = element.getBoundingClientRect();
+            let centerX = rect.left + rect.width / 2;
+            let centerY = rect.top + rect.height / 2;
+            let elementAtCenter = document.elementFromPoint(centerX, centerY);
+            return elementAtCenter === circle;
+        }
+        let runcell = [];
+        setInterval(function () {
+            let styles = '';
+            cellsA.forEach((cell, index) => {
+                if (isOverlapped(cell)) {
+                    styles += '.grida .cell:nth-child(' + (index + 1) + ') { animation-play-state: running; }';
+                    runcell.push(cell);
+                    cell.style.opacity = 1;
+                } else {
+                    styles += '.grida .cell:nth-child(' + (index + 1) + ') { animation-play-state: paused; }';
+                }
+            });
+            cellsB.forEach((cell, index) => {
+                if (isOverlapped(cell)) {
+                    styles += '.gridb .cell:nth-child(' + (index + 1) + ') { animation-play-state: running; }';
+                    runcell.push(cell);
+                    cell.style.opacity = 1;
+                } else {
+                    styles += '.gridb .cell:nth-child(' + (index + 1) + ') { animation-play-state: paused; }';
+                }
+            });
+            let styleElement = document.getElementById('dynamic-styles');
+            if (!styleElement) {
+                styleElement = document.createElement('style');
+                styleElement.id = 'dynamic-styles';
+                document.head.appendChild(styleElement);
+            }
+            styleElement.textContent = styles;
+        }, 10);
+    </script>
+</body>
+
+</html>

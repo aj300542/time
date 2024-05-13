@@ -1,0 +1,86 @@
+body {
+    display: flex;
+    width: 50vw;
+    height: 100vh;
+    margin: 0 auto;
+    padding: 0%;
+    justify-content: center;
+    align-items: center;
+    background-color: transparent;
+    transform: scale(0.625, 0.757);
+}
+
+.circle {
+    width: 85px;
+    height: 85px;
+    border-radius: 50%;
+    position: absolute;
+    mix-blend-mode: screen;
+    opacity: 0.001;
+}
+
+.svg-container {
+    position: relative;
+
+}
+
+@keyframes spin {
+    from {
+        transform: rotate(0deg) scale(1);
+    }
+
+    to {
+        transform: rotate(900deg) scale(5);
+    }
+}
+
+.container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    margin: 0;
+    background-color: transparent;
+}
+
+.grid {
+    position: absolute;
+    display: grid;
+    gap: 68px;
+}
+
+.grida {
+    grid-template-columns: repeat(8, 20px);
+    grid-template-rows: repeat(10, 20px);
+    transform: translate(15px, -10px);
+}
+
+.gridb {
+    grid-template-columns: repeat(7, 20px);
+    grid-template-rows: repeat(10, 20px);
+    transform: translate(15px, 35px);
+    
+}
+
+.cell {
+    width: 15px;
+    height: 7px;
+    border-radius: 50%;
+    animation: spin var(--spin-duration) linear infinite;
+    animation-play-state: paused;
+    opacity: 0;
+}
+
+.cella {
+    background-color: orange;
+}
+ 
+.cellb {
+    background-color: wheat;
+}
+
+.useless {
+    background-size: 90vh 100vh;
+    mix-blend-mode: luminosity;
+    backdrop-filter: blur(10px);
+}
